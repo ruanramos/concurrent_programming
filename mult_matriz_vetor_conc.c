@@ -39,7 +39,7 @@ typedef struct {
 	// o ultimo fluxo trata os elementos restantes
 	if (index < nthreads-1) fim = inicio + tam_bloco;
 	else fim = colunas;
-	printf("thread: %d --- inicio: %d ---- fim: %d\n", index, inicio, fim);
+	//printf("thread: %d --- inicio: %d ---- fim: %d\n", index, inicio, fim);
 
 	int i, j;
    for (i=0; i<linhas; i++) {

@@ -34,7 +34,7 @@ typedef struct {
 	int nthreads = arg->nthreads;
 
 	int inicio, fim; //intervalo de elementos processados por cada thread
-	int tam_bloco = colunas/nthreads;
+	int tam_bloco = linhas/nthreads;
 	inicio = index * tam_bloco;
 	// o ultimo fluxo trata os elementos restantes
 	if (index < nthreads-1) fim = inicio + tam_bloco;
@@ -42,9 +42,9 @@ typedef struct {
 	//printf("thread: %d --- inicio: %d ---- fim: %d\n", index, inicio, fim);
 
 	int i, j;
-   for (i=0; i<linhas; i++) {
+   for (i=inicio; i<fim; i++) {
       b[i] = 0;
-      for (j=inicio; j<fim; j++) {
+      for (j=0; j<colunas; j++) {
          b[i] += a[i*colunas+j] * x[j];
       }
    }
@@ -277,4 +277,3 @@ int main(int argc, char *argv[]) {
 	//printf("--Thread principal terminou\n");
 	pthread_exit(NULL);
 }
-
